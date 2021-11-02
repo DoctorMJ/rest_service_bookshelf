@@ -1,0 +1,79 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-master.yaml
+  - changeSet:
+      id: 1
+      author: user1
+      changes:
+        - createTable:
+            tableName: books
+            columns:
+              - column:
+                  name: bnumber
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: bname
+                  type: varchar(100)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: bcheck
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: auid
+                  type: INT
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: user1
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: bnumber
+                  value: 1
+              - column:
+                  name: bname
+                  value: "Fate"
+              - column:
+                  name: bcheck
+                  value: true
+              - column:
+                  name: auid
+                  value: 201
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: bnumber
+                  value: 2
+              - column:
+                  name: bname
+                  value: "In Bloom"
+              - column:
+                  name: bcheck
+                  value: true
+              - column:
+                  name: auid
+                  value: 3501
+  - changeSet:
+      id: 3
+      author: user1
+      changes:
+        - createSequence:
+            cacheSize: 1
+            cycle: false
+            dataType: INT
+            incrementBy: 1
+            maxValue: 30
+            minValue: 1
+            sequenceName: hibernate_sequence
+            startValue: 3
