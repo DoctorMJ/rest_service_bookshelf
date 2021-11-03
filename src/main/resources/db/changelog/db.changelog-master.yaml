@@ -30,6 +30,46 @@ databaseChangeLog:
                   type: INT
                   constraints:
                     nullable: false
+        - createTable:
+            tableName: authors
+            columns:
+              - column:
+                  name: authorid
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: firstname
+                  type: varchar(100)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: patronymic
+                  type: varchar(100)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: secondname
+                  type: varchar(100)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: date
+                  type: varchar(10)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: biography
+                  type: varchar(100)
+                  constraints:
+                    unique: true
+                    nullable: false
   - changeSet:
       id: 2
       author: user1
@@ -48,7 +88,22 @@ databaseChangeLog:
                   value: true
               - column:
                   name: auid
-                  value: 201
+                  value: 1000
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: bnumber
+                  value: 3
+              - column:
+                  name: bname
+                  value: "Atack Of Titan"
+              - column:
+                  name: bcheck
+                  value: true
+              - column:
+                  name: auid
+                  value: 1001
         - insert:
             tableName: books
             columns:
@@ -63,7 +118,49 @@ databaseChangeLog:
                   value: true
               - column:
                   name: auid
-                  value: 3501
+                  value: 1000
+        - insert:
+            tableName: authors
+            columns:
+              - column:
+                  name: authorid
+                  value: 1001
+              - column:
+                  name: firstname
+                  value: "Ivan"
+              - column:
+                  name: patronymic
+                  value: "Petrovich"
+              - column:
+                  name: secondname
+                  value: "Zayzev"
+              - column:
+                  name: date
+                  value: "28.03.1984"
+              - column:
+                  name: biography
+                  value: "from Leningrad"
+        - insert:
+            tableName: authors
+            columns:
+              - column:
+                  name: authorid
+                  value: 1000
+              - column:
+                  name: firstname
+                  value: "Runi"
+              - column:
+                  name: patronymic
+                  value: "Albedo"
+              - column:
+                  name: secondname
+                  value: "Ryis"
+              - column:
+                  name: date
+                  value: "28.03.1963"
+              - column:
+                  name: biography
+                  value: "from Italy"
   - changeSet:
       id: 3
       author: user1
@@ -76,4 +173,13 @@ databaseChangeLog:
             maxValue: 30
             minValue: 1
             sequenceName: hibernate_sequence
-            startValue: 3
+            startValue: 4
+        - createSequence:
+            cacheSize: 1
+            cycle: false
+            dataType: INT
+            incrementBy: 1
+            maxValue: 3000
+            minValue: 1
+            sequenceName: hibernate_sequence1
+            startValue: 1002

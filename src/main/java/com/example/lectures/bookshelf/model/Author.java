@@ -1,26 +1,39 @@
 package com.example.lectures.bookshelf.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "authors")
 public class Author {
-    private Integer auId;
-    private String name;
+    @Id
+    @Column(name = "authorid")
+    @SequenceGenerator(name = "clientsIdSeq1", sequenceName = "hibernate_sequence1", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "clientsIdSeq1")
+    private Integer authorid;
+    @Column(name = "firstname")
+    private String firstname;
+    @Column(name = "patronymic")
     private String patronymic;
-    private String sname;
+    @Column (name = "secondname")
+    private String secondname;
+    @Column (name = "date")
     private String date;
+    @Column(name = "biography")
     private String biog;
 
     public Integer getAuId(){
-        return auId;
+        return authorid;
     }
     public void setAuId(Integer auId) {
-        this.auId=auId;
+        this.authorid=auId;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFname(String fname) {
-        this.name = name;
+    public void setFirstname(String fname) {
+        this.firstname = firstname;
     }
     public String getPatronymic() {
         return patronymic;
@@ -29,11 +42,11 @@ public class Author {
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
     }
-    public String getSname(){
-        return sname;
+    public String getSecondname(){
+        return secondname;
     }
-    public void setSname(String sname){
-        this.sname=sname;
+    public void setSecondname(String sname){
+        this.secondname =sname;
     }
     public String getDate(){
         return date;
